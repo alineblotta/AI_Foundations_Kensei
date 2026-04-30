@@ -1,4 +1,4 @@
-# Kensei CyberSec Lab - Pathfinder 2026
+# PROJETO EXTRA: Kensei CyberSec Lab - Pathfinder 2026
 
 carreiras = {
     "1": {"nome": "Defesa (Blue Team)", "foco": "Monitorar e defender infraestrutura.", "skills": ["SIEM", "Logs", "Firewalls"], "certs": ["Security+", "BTL1"]},
