@@ -1,0 +1,40 @@
+New HSCC guide addresses cybersecurity risks specific to healthcare AI
+
+Artificial intelligence systems have distinct cyber-risks that providers must tackle. The Health Sector Coordinating Council aims to help health systems manage implementations in enterprise, ecosystem and third-party adoption scenarios.
+
+By Andrea Fox, Senior Editor
+
+As the healthcare sector adopts artificial intelligence across a wide variety of clinical and operational use cases, provider organizations need more than regulatory guidelines to establish effective artificial intelligence cybersecurity governance, leaders from the Healthcare and Public Health Sector Coordinating Council said. 
+
+This week, HSCC's Cybersecurity Working Group (CWG) released its "Health Industry AI Cybersecurity Governance Framework Implementation Guide" as a how-to and AI-specific incident response playbook. 
+
+The recommended cybersecurity framework for various AI systems can aid hospitals and health systems in identifying routine AI governance challenges, such as model drift, and help protect against external threats like data poisoning and adversarial attacks. 
+
+WHY IT MATTERS
+The new guide explores a spectrum of AI technologies, including traditional machine learning models, generative AI and agentic AI systems capable of autonomous actions. 
+
+With each AI technology category, the CWG addresses distinct cyber-risk issues requiring governance oversight and controls. The cyber best practices describe how to organize roles and responsibilities, conduct inventory management and review language in vendor contracts. 
+
+The five-level AI autonomy framework also adapts to healthcare contexts, explains AI supply chain and concentration risks, and details how to create operational resilience for AI-dependent clinical workflows, nonhuman identity management, patient engagement and transparency obligations, liability and insurance considerations, and governance requirements for research AI, the working group said.
+
+"The secure-by-design and implementation recommendations offered in this guide will help mitigate unintended cybersecurity risk and consequences of AI use in healthcare and help prevent adversarial exploitation of AI-related technical flaws," John Riggi, national advisor for cybersecurity and risk at the American Hospital Association, said in an announcement promoting the guide to AHA members.
+
+In addition to detailing baseline requirements for internal provider processes, the guide includes strongly recommended practices and optional enhancements. There's also a series of templates and checklists, such as "The Board AI Risk Reporting Template."
+
+THE LARGER TREND
+HSCC said the guide complements prior AI-specific publications to adopt AI securely. 
+
+Of note, it often references the "Health Industry Third-Party AI Risk and Supply Chain Transparency Guide," which HSCC's Third-Party AI Risk and Supply Chain Transparency Task Group released in April, and "should be used in conjunction with this publication," the CWG said. 
+
+That guide addresses the need for enhanced transparency, governance and risk management of third-party AI systems and vendors.
+
+The suite of HSCC works reinforces its five-year strategic plan, which sets a goal to upgrade the diagnosis of healthcare cybersecurity from "critical" to "stable condition" by 2029 to reduce patient safety risks.
+
+"We are calling on all health industry stakeholders to join us in this imperative for the benefit of patients and the overall health of the sector," Chris Tyberg, CWG vice chair and chief information security officer for Abbott, said in a statement when the plan was set in motion in 2024.
+
+Since then, advancements in AI coding tools have evolved a new phase in healthcare with new and yet emerging security vulnerabilities. Well-meaning care teams want to build their own tools but may not have the cyber acumen to spot security flaws.
+
+ON THE RECORD
+"This comprehensive guide is a must-read for all healthcare organizations, vendors and suppliers as the development and implementation of various forms of AI into healthcare settings has become widespread at tremendous speed and scale," Riggi said.
+
+Source: Healthcare IT News (https://www.healthcareitnews.com/news/new-hscc-guide-addresses-cybersecurity-risks-specific-healthcare-ai)

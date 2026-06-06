@@ -1,0 +1,35 @@
+Na era da IA, o tempo de resposta virou o principal risco da cibersegurança
+
+Por Bruno Caldas*
+
+A cibersegurança passa por uma mudança estrutural: na era da IA, o tempo de resposta deixou de ser um indicador operacional e se tornou o principal fator de risco para as empresas.
+
+Ataques já são conduzidos de forma automatizada e operam em velocidade de máquina. Em cenários mais avançados, os dados revelaram que o tempo entre o acesso inicial e o comprometimento total colapsou de horas para impressionantes 22 segundos – reduzindo drasticamente a janela de reação das empresas.
+
+Do outro lado, a resposta ainda segue outro ritmo. Muitas organizações levam semanas ou meses para identificar e conter incidentes, o que amplia o impacto e transforma falhas pontuais em crises operacionais.
+
+Esse descompasso cria uma assimetria crítica: ataques acontecem em segundos, enquanto a reação ainda é lenta, fragmentada e dependente de processos que não foram desenhados para esse nível de velocidade.
+
+Parte dessa mudança está diretamente ligada à inteligência artificial. O que antes era uma ferramenta de apoio passa a atuar de forma ativa na detecção, análise e execução de respostas em tempo real. Na prática, tanto ataque quanto defesa já operam com automação e escala.
+
+Mas há um fator que agrava esse cenário. O ambiente corporativo já não é composto apenas por usuários humanos. Agentes autônomos, integrações via APIs e automações descentralizadas passaram a fazer parte da operação diária, muitas vezes sem visibilidade ou controle centralizado. O primeiro desafio, portanto, é básico, mas ainda negligenciado em muitas empresas: entender o que já está rodando dentro do ambiente.
+
+O risco deixa de estar apenas no uso da tecnologia e passa a estar na sua falta de governança. A proliferação de agentes autônomos – muitas vezes criados fora das áreas de tecnologia – amplia a superfície de ataque e introduz um novo tipo de vulnerabilidade: sistemas que tomam decisões sem supervisão adequada.
+
+Isso muda a lógica da segurança. O desafio já não é apenas proteger sistemas, mas governar entidades digitais que operam dentro da organização. Isso exige uma abordagem baseada em identidade, rastreabilidade e limites claros de atuação.
+
+Nesse cenário, identidades não-humanas deixam de ser exceção e passam a dominar o ambiente digital. APIs, tokens e agentes de IA tornam-se pontos críticos de controle, substituindo o antigo perímetro de rede como principal foco de atenção da segurança.
+
+Ao mesmo tempo, a própria arquitetura de defesa precisa evoluir. O acúmulo de ferramentas desconectadas reduz a visibilidade e aumenta o tempo de resposta, transformando a complexidade em um risco adicional. Em cibersegurança, complexidade demais não é sofisticação. É uma vulnerabilidade.
+
+Esse desafio também extrapola os limites da própria empresa. Em um ambiente cada vez mais baseado em SaaS e integrações, a capacidade de resposta passa a depender da velocidade com que fornecedores e parceiros conseguem se adaptar a novas ameaças.
+
+A cibersegurança deixou de ser um tema técnico. Seus impactos hoje atingem diretamente a operação, a reputação e os resultados das empresas.
+
+Em um ambiente em que ataques acontecem em segundos, a segurança passa a ser, essencialmente, uma questão de coordenação. Eles não respeitam organogramas, fronteiras entre áreas ou setores econômicos. A resposta também não pode depender de silos.
+
+O diferencial competitivo já não está em ter mais tecnologia, mas em conseguir responder mais rápido – com governança, clareza e capacidade de adaptação contínua.
+
+*Bruno Caldas é Head of Cyber Security da Skyone, empresa brasileira de tecnologia especializada em cloud, dados e Inteligência Artificial.
+
+Fonte: Convergência Digital (https://convergenciadigital.com.br/opiniao/na-era-da-ia-o-tempo-de-resposta-virou-o-principal-risco-da-ciberseguranca/)
