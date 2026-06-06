@@ -1,1 +1,5 @@
+# Arquivos de ambiente
 .env
+
+# Logs do projeto WAF
+logs_waf.csv
