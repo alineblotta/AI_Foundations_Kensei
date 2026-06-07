@@ -1,0 +1,181 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "225dd176-4ae5-4477-9234-23df58c01880",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "db03e5d5-b12b-499b-ae1a-e67173e89ee2",
+      "name": "When chat message received",
+      "webhookId": "b8cad3f0-b439-41a6-8218-530b2c06216c"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Gere uma frase motivacional curta sobre cibersegurança.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "c44be3db-787b-4506-8510-f0f608a622ff",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        288,
+        208
+      ],
+      "id": "192784c0-06b9-44c5-a3eb-097178e8afaa",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "zheGnOyvsSLyOdml",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1s-EMlZR5J2ALfBE5cazf5ib5KjjpcM3yE7P2g2aPMKc",
+          "mode": "list",
+          "cachedResultName": "Frase",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1s-EMlZR5J2ALfBE5cazf5ib5KjjpcM3yE7P2g2aPMKc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1s-EMlZR5J2ALfBE5cazf5ib5KjjpcM3yE7P2g2aPMKc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Frase": "="
+          },
+          "matchingColumns": [
+            "Frase"
+          ],
+          "schema": [
+            {
+              "id": "Frase",
+              "displayName": "Frase",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        768,
+        0
+      ],
+      "id": "90e3cc90-489d-4f68-8822-6b58c7e2afab",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aZdoxLxCwF0L5xRX",
+          "name": "Google Sheets account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "592712f4-d382-4d8a-a6ec-93c18ef2ca96",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "179a1e81131de4a7debd171367514ef32f3fdb374c299fc76aa4a46288b50b65"
+  },
+  "nodeGroups": [],
+  "id": "SHeD0jmaGW8yXHbV",
+  "tags": []
+}

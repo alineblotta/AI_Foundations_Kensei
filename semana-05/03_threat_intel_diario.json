@@ -1,0 +1,234 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -544,
+        -48
+      ],
+      "id": "b0140241-d4bc-4546-a2da-918d55122c58",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -128,
+        -16
+      ],
+      "id": "6318e759-4697-43a5-a770-1df4b585c15b",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "url": "https://www.bleepingcomputer.com/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -336,
+        -48
+      ],
+      "id": "feb3cc37-fa68-41f7-9461-31f0805da781",
+      "name": "RSS Read1"
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.feedburner.com/TheHackersNews",
+        "options": {
+          "ignoreSSL": true
+        }
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -320,
+        128
+      ],
+      "id": "77df707e-adae-43d1-9e15-232f93924552",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "jsCode": "const agora = Date.now();\nconst vinteQuatroHorasEmMs = 24 * 60 * 60 * 1000;\nconst limiteData = agora - vinteQuatroHorasEmMs;\n\nconst resultados = [];\n\nfor (const item of items) {\n    const dataNoticia = new Date(item.json.pubDate).getTime();\n    if (!isNaN(dataNoticia) && dataNoticia > limiteData) {\n        resultados.push({\n            json: {\n                title: item.json.title,\n                link: item.json.link,\n                pubDate: item.json.pubDate\n            }\n        });\n    }\n}\n\nif (resultados.length === 0) {\n    return [{ json: { noNews: true } }];\n}\nreturn resultados;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        64,
+        -16
+      ],
+      "id": "fd268714-bfe5-4b97-be8a-d8dcc6ed7702",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=\"Você é um Analista de Cibersegurança Sênior especializado em Threat Intelligence. Sua função é processar uma lista de notícias de segurança e transformá-la em um relatório executivo de alto nível para tomada de decisão.\n\nDiretrizes de Processamento:\n\nAnálise de Risco: Para cada notícia, extraia o título, um resumo técnico-executivo (máximo 2 frases) focado no impacto operacional e a criticidade ([ALTA], [MÉDIA], [BAIXA]).\n\nFormatação Técnica: Se a notícia envolver uma vulnerabilidade, identifique o código CVE (se disponível).\n\nSaída HTML: O resultado final deve ser entregue estritamente em formato HTML para um e-mail. Utilize tags <h3> para títulos, <p> para descrições e <a> para os links das fontes.\n\nEstilo: Seja objetivo, profissional e evite jargões desnecessários. Use o tom de um relatório de alerta rápido.\n\nEstrutura do Relatório:\n\n[Título da Notícia]\n\nCriticidade: [Nível]\n\nImpacto: [Resumo em 1-2 frases]\n\nFonte: [Link]\n\nEntrada de Dados:\n{{ $json.title }} | Link: {{ $json.link }}\"",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        272,
+        -16
+      ],
+      "id": "3f48daed-7807-445a-88ab-93540b713058",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sendTo": "alinee.blotta@gmail.com",
+        "subject": "=Briefing Diário de Cibersegurança - {{ $now.format('dd/MM/yyyy') }}",
+        "message": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        624,
+        -16
+      ],
+      "id": "f2dfb9c5-18c1-4b8b-b365-5876894d283e",
+      "name": "Send a message",
+      "webhookId": "733780c6-96ec-419b-be4d-9bf2ada372da",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "SDT4QVHQyiiDDmYL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash-lite",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        144,
+        192
+      ],
+      "id": "0274f585-306a-4eca-b745-9c1cb234eeed",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "1FyYav5ZFNA6AWwD",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "8b7c310e-2df5-4e53-b398-d79d8029e316",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e8b8654a77088282d82d453d180c50374bc6d58cf9eec634424bc941aba4064c"
+  },
+  "nodeGroups": [],
+  "id": "feFz8wlX7KwycHMp",
+  "tags": []
+}

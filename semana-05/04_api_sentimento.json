@@ -1,0 +1,120 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sentiment",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "86ce3fae-36eb-4d92-99f0-75a77fbfb13b",
+      "name": "Webhook",
+      "webhookId": "cf2c3ae1-aa66-4dd4-8685-ca443b029d73"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=\"Analise o seguinte texto: '{{ $json.body.texto }}'.\n\nClassifique o sentimento em: 'positivo', 'negativo' ou 'neutro'.\nExtraia também as 3 principais palavras-chave do texto.\n\nRetorne a resposta APENAS em formato JSON, exatamente assim:\n{\n\"sentimento\": \"[resultado]\",\n\"confianca\": [número entre 0 e 1],\n\"palavras_chave\": [\"palavra1\", \"palavra2\", \"palavra3\"]\n}\"",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "1ce8d393-b984-456a-994c-be6f43f742e6",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        80,
+        208
+      ],
+      "id": "335d800a-ab5a-440e-9242-cae5bd001b4f",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "1FyYav5ZFNA6AWwD",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ typeof $json.output === 'string' ? JSON.parse($json.output) : $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        560,
+        0
+      ],
+      "id": "16c85b0c-c6b3-403b-bd69-4423d6c9e462",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "f8abd3d3-1bf5-4986-a6e3-82307f6cd442",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e8b8654a77088282d82d453d180c50374bc6d58cf9eec634424bc941aba4064c"
+  },
+  "nodeGroups": [],
+  "id": "feFz8wlX7KwycHMp",
+  "tags": []
+}
