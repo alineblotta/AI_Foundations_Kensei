@@ -47,7 +47,7 @@ Este projeto foi **concebido e desenvolvido por mim** como uma solução de segu
 * **Valor Operacional:** Este sistema automatiza a etapa de triagem inicial, otimizando tempo e garantindo que o alerta crítico chegue apenas quando existe risco real à operação.
 
 **Evidências de Funcionamento:**
-* **Fluxo no n8n:** ![Fluxo de Inteligência](prints/05_monitor_cisa_vulnerabilidades.png)
+* **Fluxo no n8n:** ![Fluxo de Inteligência](prints/05_monitor_cisa_vulnerabilidades1.png)
 * **Relatório no Telegram:** ![Alerta Crítico Automatizado](prints/05_monitor_cisa_vulnerabilidades2.png)
 
 ---
