@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-# 1. CARREGAR (Caminho curto porque você já está na pasta certa)
+# 1. CARREGAR 
 df = pd.read_csv('cyber_attacks_simulated.csv')
 
 # 2. EXPLORAR E LIMPAR
